@@ -4,15 +4,6 @@ import torch
 from torchvision import datasets, transforms
 
 
-if not os.path.exists('data'):
-    kaggle.api.authenticate()
-    kaggle.api.dataset_download_files(
-        dataset='sachchitkunichetty/rvf10k',
-        path='data',
-        unzip=True
-    )
-
-
 def init_loaders(batch_size, img_size):
     data_transform = transforms.Compose([
         transforms.Resize((img_size, img_size)),
@@ -59,3 +50,12 @@ def init_loaders(batch_size, img_size):
     )
 
     return train_data_loader, val_data_loader, test_data_loader
+
+
+if __name__ == "__main__":
+    if not os.path.exists('data'):
+        kaggle.api.authenticate()
+        kaggle.api.dataset_download_files(
+            dataset='sachchitkunichetty/rvf10k',
+            path='data',
+            unzip=True)
