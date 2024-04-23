@@ -7,7 +7,7 @@ from data import init_loaders
 
 
 IMG_SIZE = 256
-BATCH_SIZE = 32
+BATCH_SIZE = 128
 EPOCHS = 8
 
 
@@ -15,12 +15,12 @@ EPOCHS = 8
 class SimpleCNN(nn.Module):
     def __init__(self):
         super(SimpleCNN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 6, 5, padding='same')
+        self.conv1 = nn.Conv2d(3, 3, 5, padding='same')
         self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(6, 16, 5, padding='same')
-        self.fc1 = nn.Linear(16 * (IMG_SIZE//4) * (IMG_SIZE//4), 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 2)
+        self.conv2 = nn.Conv2d(3, 8, 5, padding='same')
+        self.fc1 = nn.Linear(8 * (IMG_SIZE//4) * (IMG_SIZE//4), 80)
+        self.fc2 = nn.Linear(80, 32)
+        self.fc3 = nn.Linear(32, 2)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
@@ -72,5 +72,6 @@ def train(device, train_loader, val_loader):
 
 if __name__ == "__main__":
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cpu')
     train_loader, val_loader, _ = init_loaders(BATCH_SIZE, IMG_SIZE)
     train(device, train_loader, val_loader)

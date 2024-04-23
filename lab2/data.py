@@ -44,7 +44,6 @@ def init_loaders(batch_size, img_size):
         test_dataset,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=4
     )
 
     return train_data_loader, val_data_loader, test_data_loader
