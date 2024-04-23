@@ -29,13 +29,11 @@ def init_loaders(batch_size, img_size):
         train_dataset,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=4
     )
     val_data_loader = torch.utils.data.DataLoader(
         val_dataset,
         batch_size=batch_size,
         shuffle=True,
-        num_workers=4
     )
 
     test_dataset = datasets.ImageFolder(
