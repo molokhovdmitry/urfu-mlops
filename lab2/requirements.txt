@@ -1,0 +1,7 @@
+kaggle
+pytorch
+torchvision
+torchaudio
+scikit-learn
+pandas
+numpy
