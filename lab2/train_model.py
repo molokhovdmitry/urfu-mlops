@@ -50,6 +50,7 @@ def train(device, train_loader, val_loader):
             optimizer.step()
             running_loss += loss.item()
 
+        # Evaluation
         model.eval()
         val_loss = 0
         with torch.no_grad():

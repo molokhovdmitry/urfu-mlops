@@ -6,9 +6,10 @@ from sklearn.metrics import accuracy_score
 from train_model import SimpleCNN, BATCH_SIZE, IMG_SIZE
 from data import init_loaders
 
-
+# Set the device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+# Load the model
 model = SimpleCNN().to(device)
 model.load_state_dict(torch.load('model.pt'))
 
@@ -20,15 +21,15 @@ model.eval()
 
 _, _, test_loader = init_loaders(BATCH_SIZE, IMG_SIZE)
 
-# Disable gradient calculation
+# Get the predictions
 with torch.no_grad():
     predictions = []
     for inputs, _ in test_loader:
         inputs = inputs.to(device)
         outputs = model(inputs)
-        # Assuming the model outputs logits, apply softmax to get probabilities
+        # Apply softmax to get probabilities
         probabilities = torch.nn.functional.softmax(outputs, dim=1)
-        # Round probabilities to get class predictions
+        # Get class predictions
         _, predicted = torch.max(probabilities, 1)
         predictions.extend(predicted.tolist())
 
