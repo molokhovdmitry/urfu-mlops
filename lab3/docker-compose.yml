@@ -4,7 +4,7 @@ services:
     build:
       context: model/
       dockerfile: Dockerfile
-    image: model
+    image: molokhovdmitry/lab3-model
     volumes:
       - $HOME/.kaggle/kaggle.json:/root/.kaggle/kaggle.json
       - ../models/:/app/models/
@@ -21,6 +21,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8501:8501
-    image: app
+    image: molokhovdmitry/lab3-app
     volumes:
       - ../models/:/app/models/
