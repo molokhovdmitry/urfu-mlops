@@ -26,6 +26,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: lab3/model
-        file: Dockerfile
+        file: ./Dockerfile
         push: true
         tags: molokhovdmitry/lab3-model:${{ github.sha }}
