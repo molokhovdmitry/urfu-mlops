@@ -7,7 +7,7 @@ services:
     image: molokhovdmitry/lab3-model
     volumes:
       - $HOME/.kaggle/kaggle.json:/root/.kaggle/kaggle.json
-      - ../models/:/app/models/
+      - ./models/:/app/models/
     deploy:
       resources:
         reservations:
@@ -23,4 +23,4 @@ services:
       - 8501:8501
     image: molokhovdmitry/lab3-app
     volumes:
-      - ../models/:/app/models/
+      - ./models/:/app/models/
