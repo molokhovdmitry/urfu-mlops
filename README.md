@@ -55,4 +55,31 @@ docker run -p 8080:8080 -p 50000:50000 -v /home/$USER/.kaggle/kaggle.json:/var/j
 
 <details>
 
+Реализованы контейнер `lab3-model`, тренирующий модель `ResNet50` и контейнер `lab3-app` - приложение на `Streamlit`, использующее эту модель. 
+
+## `/model/`
+
+Содержит файлы образа [molokhovdmitry/lab3-model](https://hub.docker.com/r/molokhovdmitry/lab3-model/tags) для тренировки `ResNet50` на датасете по распознаванию мусора.
+
+### data.py
+Скрипт для загрузки c `Kaggle` датасета [Garbage Classification](https://www.kaggle.com/datasets/asdasdasasdas/garbage-classification) и функция для создания DataLoader для тренировочной, валидационной и тестовой выборок.
+### train_model.py
+Скрипт для тренировки `ResNet50` на датасете и сохранения модели в общую с контейнером `lab3-app` папку `models` при улучшении метрики `Weighted F1 score` на валидационной выборке.
+### test_model.py
+Скрипт для получения предсказаний на тестовых данных, вывода метрики `Weighted F1 score` и `Classification report`.
+### pipeline.sh
+Скрипт для запуска пайплайна в контейнере.
+
+## `/app/`
+Содержит файлы образа [molokhovdmitry/lab3-app](https://hub.docker.com/r/molokhovdmitry/lab3-app/tags), который развертывает веб-приложение `Streamlit` для распознавания типа мусора по картинке, использующий модель, натренированную контейнером `lab3-model`.
+
+### app.py
+Файл приложения `Streamlit`.
+
+## docker-compose.yml
+Файл для запуска контейнеров.
+
+## .github/workflows/docker-images.yml
+Workflow для запуска и загрузки образов в [dockerhub](https://hub.docker.com/u/molokhovdmitry) с привязкой имени тэга к версии сборки.
+
 </details>
