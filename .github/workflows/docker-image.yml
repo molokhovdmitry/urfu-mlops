@@ -11,6 +11,7 @@ jobs:
   build-and-push:
 
     runs-on: ubuntu-latest
+    environment: lab3
 
     steps:
     - uses: actions/checkout@v4
