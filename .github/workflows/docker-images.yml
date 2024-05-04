@@ -24,9 +24,16 @@ jobs:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-    - name: Build and push the Docker image
+    - name: Build and push the lab3-model Docker image
       uses: docker/build-push-action@v5
       with:
         context: lab3/model
         push: true
         tags: molokhovdmitry/lab3-model:${{ github.sha }}
+    
+    - name: Build and push the lab3-app Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: lab3/app
+        push: true
+        tags: molokhovdmitry/lab3-app:${{ github.sha }}
