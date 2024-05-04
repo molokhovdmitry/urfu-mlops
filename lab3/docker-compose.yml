@@ -1,0 +1,26 @@
+version: '1'
+services:
+  model:
+    build:
+      context: /home/${USER}/projects/urfu-mlops/lab3/model
+      dockerfile: Dockerfile
+    image: model
+    volumes:
+      - /home/${USER}/.kaggle/kaggle.json:/root/.kaggle/kaggle.json
+      - /home/${USER}/projects/urfu-mlops/lab3/models:/app/models/
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  app:
+    build:
+      context: /home/${USER}/projects/urfu-mlops/lab3/app
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+    image: app
+    volumes:
+      - /home/${USER}/projects/urfu-mlops/lab3/models:/app/models/
