@@ -83,3 +83,19 @@ docker run -p 8080:8080 -p 50000:50000 -v /home/$USER/.kaggle/kaggle.json:/var/j
 Workflow для запуска и загрузки образов в [dockerhub](https://hub.docker.com/u/molokhovdmitry) с привязкой имени тэга к версии сборки.
 
 </details>
+
+# lab4 - DVC
+
+<details>
+
+Скрипты для обработки датасета [US Accidents (2016 - 2023)](https://www.kaggle.com/datasets/sobhanmoosavi/us-accidents).
+
+### cluster_coords.py
+Скрипт для `KMeans` кластеризации по признакам `Start_Lat` и `Start_Lng`.
+### remove_nans.py
+Скрипт для заполнения пропущенных значений средним для числовых признаков, самым частым значением для категориальных.
+### ohe.py
+Скрипт для `One-hot` кодирования признаков `Source` и `State`.
+
+</details>
+
