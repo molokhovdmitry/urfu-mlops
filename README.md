@@ -99,7 +99,7 @@ Workflow для запуска и загрузки образов в [dockerhub]
 
 </details>
 
-# lab4 - PyTest
+# lab5 - PyTest
 
 <details>
 
