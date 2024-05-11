@@ -99,3 +99,18 @@ Workflow для запуска и загрузки образов в [dockerhub]
 
 </details>
 
+# lab4 - PyTest
+
+<details>
+
+## lab.ipynb
+- Скачивает данные с `Kaggle` соревнования [New York City Taxi Trip Duration](https://www.kaggle.com/c/nyc-taxi-trip-duration)
+- Делит данные на 4 датасета, в одном из датасетов к признакам `pickup_longitude` `pickup_latitude` `dropoff_longitude` `dropoff_latitude` добавляется шум. Сохраняет датасеты.
+- Предобрабатывает данные и тренирует модель линейной регрессии на первом наборе данных. Сохраняет пайплайн модели с помощью `joblib`.
+- Считает метрику `RMSLE` для предсказаний на остальных наборах данных.
+- Запускает `PyTest`, который обнаруживает большую метрику `RMSLE` на наборе данных с шумом.
+
+## test_model.py
+Тесты для сравнения метрики RMSLE на наборах данных с заданным `THRESHOLD_RMSLE`.
+
+</details>
